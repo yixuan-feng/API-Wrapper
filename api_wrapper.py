@@ -36,19 +36,25 @@ class PublicApi:
 
 
 class ApiWrapper:
+    """ Class  for wrapping the API and generating a data frame. """
     def __init__(self, api_url):
+        """ Initialize the APIWrapper with an API URL. """
         self.api_url = api_url
 
     def __format__(self, response):
+        """ Returns a json response. """
         return response.json()
 
     def get_data(self):
+        """ Makes a get request to the API and returns a json response. """
         return self.__format__(requests.get(self.api_url))
 
     def generate_df(self, json_data):
+        """ Returns a dataframe from a simple json. """
         return pd.json_normalize(json_data)
 
 
+# Example Usage
 if __name__ == '__main__': 
     #covid_api = PublicApi("https://covid-api.mmediagroup.fr/v1/", "vaccines")
     api = PublicApi("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all")

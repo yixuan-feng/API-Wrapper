@@ -1,3 +1,4 @@
+from requests_oauthlib import OAuth1
 import requests
 import pandas as pd
 
@@ -37,9 +38,23 @@ class PublicApi:
 
 class ApiWrapper:
     """ Class  for wrapping the API and generating a data frame. """
-    def __init__(self, api_url):
+    def __init__(self, api_url, username=None, password=None, api_key=None, secret_key=None, token=None):
         """ Initialize the APIWrapper with an API URL. """
         self.api_url = api_url
+        self.username = username
+        self.password = password
+        self.api_key = api_key
+        self.secret_key = secret_key
+        self.token = token
+        self.auth = None
+
+    def __create_auth(self):
+        if self.username and self.password:
+            self.auth = (self.username, self.password)
+        elif self.api_key and self.secret_key and self.token:
+            self.auth = OAuth1(self.api_key, self.secret_key, self.token)
+        else:
+            self.auth = None
 
     def __format__(self, response):
         """ Returns a json response. """
@@ -47,7 +62,7 @@ class ApiWrapper:
 
     def get_data(self):
         """ Makes a get request to the API and returns a json response. """
-        return self.__format__(requests.get(self.api_url))
+        return self.__format__(requests.get(self.api_url, self.auth))
 
     def generate_df(self, json_data):
         """ Returns a dataframe from a simple json. """
@@ -66,4 +81,5 @@ if __name__ == '__main__':
     wrap_covid_api = ApiWrapper(covid_api.api_url())
     covid_df = wrap_covid_api.generate_df(wrap_covid_api.get_data())
     print(covid_df)
+
 

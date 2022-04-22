@@ -49,6 +49,7 @@ class ApiWrapper:
         self.auth = None
 
     def __create_auth(self):
+        """ Create an authorization header. """
         if self.username and self.password:
             self.auth = (self.username, self.password)
         elif self.api_key and self.secret_key and self.token:
@@ -61,12 +62,12 @@ class ApiWrapper:
         return response.json()
 
     def get_data(self):
-        """ Makes a get request to the API and returns a json response. """
+        """ Makes a get request to the API and returns a json object. """
         return self.__format__(requests.get(self.api_url, self.auth))
 
     def generate_df(self, json_data):
         """ Returns a dataframe from a simple json. """
-        return pd.json_normalize(json_data)
+        return pd.json_normalize(json_data, max_level=5)
 
 
 # Example Usage
@@ -81,5 +82,8 @@ if __name__ == '__main__':
     wrap_covid_api = ApiWrapper(covid_api.api_url())
     covid_df = wrap_covid_api.generate_df(wrap_covid_api.get_data())
     print(covid_df)
+
+
+
 
 

@@ -1,5 +1,5 @@
 import unittest
-from api_wrapper import PublicApi, ApiWrapper
+from wrapper.api_wrapper import PublicApi, ApiWrapper
 
 
 class TestPublicApi(unittest.TestCase):

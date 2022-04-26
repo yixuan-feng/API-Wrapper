@@ -15,6 +15,7 @@ The package wraps specific Public Restful APIs and generates a dataframe that ca
 ## Features
 * Getting and setting Public Restful APIs information( base-url and endpoints)
 * Wrapping the Public Restful APIs and returns a json response
+* Support for Restful APIs with authentication keys or tokens
 * Generating a pandas dataframe 
 
 ## Usage 
@@ -39,7 +40,6 @@ Simple Restful APIs:-
 ```
 
 ## Future / Upcoming Work
-* Support for Restful APIs with authentication keys or tokens
 * Generation of dataframes from complex Json responses that include multiple nested layers.
 * Uploading the package on PYPI
 

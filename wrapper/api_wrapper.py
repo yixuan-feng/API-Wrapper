@@ -4,9 +4,7 @@ import pandas as pd
 
 
 class PublicApi:
-    """
-    A class for storing the public APIs data including base urls and endpoints
-    """
+    """ A class for storing the public APIs data including base urls and endpoints. """
     def __init__(self, base_url, endpoint=None):
         """ Initialize the Public Api with a base URL and endpoint. """
         self.base_url = base_url
@@ -39,7 +37,7 @@ class PublicApi:
 class ApiWrapper:
     """ Class  for wrapping the API and generating a data frame. """
     def __init__(self, api_url, username=None, password=None, api_key=None, secret_key=None, token=None):
-        """ Initialize the APIWrapper with an API URL. """
+        """ Initialize the APIWrapper with the API URL and Authorizations. """
         self.api_url = api_url
         self.username = username
         self.password = password
@@ -49,7 +47,10 @@ class ApiWrapper:
         self.auth = None
 
     def __create_auth(self):
-        """ Create an authorization header. """
+        """
+        Create an authorization header.
+        Returns: The authorization header composed of either username, password or api_key, secret_key, token
+        """
         if self.username and self.password:
             self.auth = (self.username, self.password)
         elif self.api_key and self.secret_key and self.token:
@@ -58,30 +59,30 @@ class ApiWrapper:
             self.auth = None
 
     def __format__(self, response):
-        """ Returns a json response. """
+        """
+        Formats API request response into a json object
+        Params: Restful API response
+        Return: json object.
+        """
         return response.json()
 
     def get_data(self):
-        """ Makes a get request to the API and returns a json object. """
+        """
+        Makes a get request to the API and returns a json object.
+        Returns: Json object
+        """
         return self.__format__(requests.get(self.api_url, self.auth))
 
     def generate_df(self, json_data):
-        """ Returns a dataframe from a simple json. """
+        """
+        Generates a dataframe from a json object.
+        Params: Json object
+        Returns: A dataframe from a simple json.
+        """
         return pd.json_normalize(json_data, max_level=5)
 
 
-# Example Usage
-if __name__ == '__main__':
-    api = PublicApi("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all")
-    wrap_api = ApiWrapper(api.api_url())
-    data = wrap_api.get_data()
-    df = wrap_api.generate_df(data)
-    print(df)
-    print("\n")
-    covid_api = PublicApi("https://covid-api.mmediagroup.fr/v1/", "vaccines")
-    wrap_covid_api = ApiWrapper(covid_api.api_url())
-    covid_df = wrap_covid_api.generate_df(wrap_covid_api.get_data())
-    print(covid_df)
+
 
 
 

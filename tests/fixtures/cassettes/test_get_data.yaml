@@ -1,0 +1,56 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.27.1
+    method: GET
+    uri: https://api.thedogapi.com/v1/images/search
+  response:
+    body:
+      string: '[{"breeds":[{"weight":{"imperial":"38 - 50","metric":"17 - 23"},"height":{"imperial":"23
+        - 26","metric":"58 - 66"},"id":8,"name":"Alaskan Husky","bred_for":"Sled pulling","breed_group":"Mixed","life_span":"10
+        - 13 years","temperament":"Friendly, Energetic, Loyal, Gentle, Confident","reference_image_id":"-HgpNnGXl"}],"id":"BJE_kx5VQ","url":"https://cdn2.thedogapi.com/images/BJE_kx5VQ_1280.jpg","width":260,"height":194}]'
+    headers:
+      Content-Length:
+      - '422'
+      Date:
+      - Thu, 28 Apr 2022 02:42:22 GMT
+      Server:
+      - Google Frontend
+      X-Cloud-Trace-Context:
+      - c5880ac399c872d1d67d9cc0daa8b6c9
+      cache-control:
+      - post-check=0, pre-check=0
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - Tue, 03 Jul 2001 06:00:00 GMT
+      last-modified:
+      - Thu Apr 28 2022 02:42:22 GMT+0000 (Coordinated Universal Time)
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      vary:
+      - Origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-response-time:
+      - 2ms
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

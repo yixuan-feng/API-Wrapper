@@ -24,7 +24,7 @@ Below is an example of how to use the package after installing and importing it 
 Simple Restful APIs:- 
 * Dog Facts API: https://dukengn.github.io/Dog-facts-API/
 ```
-    api = PublicApi("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all")
+    api = PublicApi("https://api.tvmaze.com/search/shows?q=girls")
     wrap_api = ApiWrapper(api.api_url())
     data = wrap_api.get_data()
     df = wrap_api.generate_df(data)

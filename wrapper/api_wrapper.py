@@ -46,7 +46,7 @@ class ApiWrapper:
         self.token = token
         self.auth = None
 
-    def __create_auth(self):
+    def create_auth(self):
         """
         Create an authorization header.
         Returns: The authorization header composed of either username, password or api_key, secret_key, token
@@ -55,8 +55,15 @@ class ApiWrapper:
             self.auth = (self.username, self.password)
         elif self.api_key and self.secret_key and self.token:
             self.auth = OAuth1(self.api_key, self.secret_key, self.token)
+        elif self.token:
+            self.auth = {'Authorization': 'Bearer {}'.format(self.token)}
+        elif self.secret_key:
+            self.auth = {'Authorization': 'Bearer {}'.format(self.secret_key)}
+        elif self.api_key:
+            self.auth = {'Authorization': 'Bearer {}'.format(self.api_key)}
         else:
             self.auth = None
+        return self.auth
 
     def __format__(self, response):
         """
@@ -75,11 +82,11 @@ class ApiWrapper:
 
     def generate_df(self, json_data):
         """
-        Generates a dataframe from a json object.
+        Generates a dataframe from a json object using Pandas normalize function.
         Params: Json object
-        Returns: A dataframe from a simple json.
+        Returns: A dataframe from a simple json object.
         """
-        return pd.json_normalize(json_data, max_level=5)
+        return pd.json_normalize(json_data, max_level=3)
 
 
 

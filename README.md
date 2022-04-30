@@ -22,7 +22,7 @@ The package wraps specific Public Restful APIs and generates a dataframe that ca
 Below is an example of how to use the package after installing and importing it in your package. 
 
 Simple Restful APIs:- 
-* Dog Facts API: https://dukengn.github.io/Dog-facts-API/
+* TVMAZE API: https://api.tvmaze.com/
 ```
     api = PublicApi("https://api.tvmaze.com/search/shows?q=girls")
     wrap_api = ApiWrapper(api.api_url())

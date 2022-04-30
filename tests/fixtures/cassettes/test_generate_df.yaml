@@ -1,0 +1,57 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.27.1
+    method: GET
+    uri: https://api.thedogapi.com/v1/images/search
+  response:
+    body:
+      string: '[{"breeds":[{"weight":{"imperial":"65 - 75","metric":"29 - 34"},"height":{"imperial":"21
+        - 28","metric":"53 - 71"},"id":14,"name":"American Foxhound","country_code":"US","bred_for":"Fox
+        hunting, scent hound","breed_group":"Hound","life_span":"8 - 15 years","temperament":"Kind,
+        Sweet-Tempered, Loyal, Independent, Intelligent, Loving","reference_image_id":"S14n1x9NQ"}],"id":"ajJCO_lDC","url":"https://cdn2.thedogapi.com/images/ajJCO_lDC.jpg","width":670,"height":536}]'
+    headers:
+      Content-Length:
+      - '469'
+      Date:
+      - Thu, 28 Apr 2022 02:43:15 GMT
+      Server:
+      - Google Frontend
+      X-Cloud-Trace-Context:
+      - d9a21d9b761b770fead48a7b5197d7d5
+      cache-control:
+      - post-check=0, pre-check=0
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - Tue, 03 Jul 2001 06:00:00 GMT
+      last-modified:
+      - Thu Apr 28 2022 02:43:15 GMT+0000 (Coordinated Universal Time)
+      strict-transport-security:
+      - max-age=15552000; includeSubDomains
+      vary:
+      - Origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-response-time:
+      - 2ms
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

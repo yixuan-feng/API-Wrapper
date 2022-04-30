@@ -15,15 +15,16 @@ The package wraps specific Public Restful APIs and generates a dataframe that ca
 ## Features
 * Getting and setting Public Restful APIs information( base-url and endpoints)
 * Wrapping the Public Restful APIs and returns a json response
+* Support for Restful APIs with authentication keys or tokens
 * Generating a pandas dataframe 
 
 ## Usage 
 Below is an example of how to use the package after installing and importing it in your package. 
 
 Simple Restful APIs:- 
-* Dog Facts API: https://dukengn.github.io/Dog-facts-API/
+* TVMAZE API: https://api.tvmaze.com/
 ```
-    api = PublicApi("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/all")
+    api = PublicApi("https://api.tvmaze.com/search/shows?q=girls")
     wrap_api = ApiWrapper(api.api_url())
     data = wrap_api.get_data()
     df = wrap_api.generate_df(data)
@@ -39,7 +40,6 @@ Simple Restful APIs:-
 ```
 
 ## Future / Upcoming Work
-* Support for Restful APIs with authentication keys or tokens
 * Generation of dataframes from complex Json responses that include multiple nested layers.
 * Uploading the package on PYPI
 

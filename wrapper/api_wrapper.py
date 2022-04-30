@@ -82,11 +82,12 @@ class ApiWrapper:
 
     def generate_df(self, json_data):
         """
-        Generates a dataframe from a json object using Pandas normalize function.
+        Generates a dataframe from a json object using Pandas normalize function
+        (Normalize semi-structured JSON data into a flat table) https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.json_normalize.html.
         Params: Json object
         Returns: A dataframe from a simple json object.
         """
-        return pd.json_normalize(json_data, max_level=3)
+        return pd.json_normalize(json_data, max_level=5)
 
 
 
